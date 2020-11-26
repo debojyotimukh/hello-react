@@ -5,7 +5,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-      title: 'Hello from bridgelabz!'
+      userName: ''
     }
     this.url = "http://www.bridgelabz.com"
   }
@@ -15,12 +15,21 @@ class App extends React.Component {
     window.open(this.url, "_blank");
   }
 
+  onNameChange = (event) => {
+    console.log("The value is: " + event.target.value);
+    this.setState({ userName: event.target.value })
+  }
   render() {
     return (
-      <div>
-        <h1>{this.state.title}</h1>
-        <img src={logo} onClick={this.onClick} alt="Bridbgelabz logo"></img>
-      </div>
+      <>
+        <div>
+          <h1>Hello {this.state.userName} from bridgelabz</h1>
+          <img src={logo} onClick={this.onClick} alt="Bridbgelabz logo"></img>
+        </div>
+        <div>
+            <input onChange={this.onNameChange}></input>
+        </div>
+      </>
     );
   }
 }
